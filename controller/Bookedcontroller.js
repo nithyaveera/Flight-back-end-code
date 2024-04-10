@@ -30,7 +30,7 @@ export const bookdetails = async (req, res) => {
         const customerBookingDetails = await bookeddetail.find({ 'customerEmail':customerEmail })
         console.log(customerBookingDetails);
         if(customerBookingDetails.length === 0) {
-            return res.status(400).json({msg:'something Wrong'})
+            return res.status(400).json({msg:'Not yet Booked'})
         }
         res.status(200).json({data:customerBookingDetails})
     } catch (error) {
