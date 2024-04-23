@@ -18,7 +18,7 @@ export const searchflight = async(req,res) => {
     if (result.length == 0 ) {
       return res.status(400).json({message:"Flight not found"})
     }
-    res.status(200).json({data:result,message:`Flights from ${startCity} to ${destination}`})
+    res.status(200).json({data:result,info:`Flights from ${startCity} to ${destination}`})
   } catch (error) {
     res.status(500).json({message:"inernal server error"})
   }
