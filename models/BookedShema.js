@@ -14,6 +14,14 @@ const BookedSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Flight",
     },
+    TripStartTime: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Flight",
+    },
+    TripEndTime:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Flight",
+    },
     bookingDate: {
         type:String
     },
