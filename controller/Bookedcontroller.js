@@ -36,4 +36,4 @@ export const bookdetails = async (req, res) => {
         res.status(500).json({msg:"internal server error"})
     }
 }
-    
+    TripStartTime,TripEndTime
