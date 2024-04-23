@@ -14,7 +14,7 @@ export const Createbooking = async (req, res) => {
             const day = String(currentDate.getDate()).padStart(2, '0');
             const dateOnly = `${year}-${month}-${day}`;
 
-            const newuser = new bookeddetail({ customerName,customerEmail, date, flightid, bookingDate:dateOnly, bookingStatus: "booked", totalprice ,numberOfTicket,TripStartTime,TripEndTime})
+            const newuser = new bookeddetail({ customerName,customerEmail, date, flightid,TripStartTime,TripEndTime, bookingDate:dateOnly, bookingStatus: "booked", totalprice ,numberOfTicket})
             await newuser.save()
         res.status(200).json({ message: "Booking Confirm" });
     }
