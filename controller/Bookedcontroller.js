@@ -3,8 +3,8 @@ import Flight from "../models/FlightSchema.js"
 
 export const Createbooking = async (req, res) => {
     try {
-        const { customerName,customerEmail, date, flightid, totalprice,numberOfTicket,TripStartTime,TripEndTime} = req.body;
-        const flight = await Flight.findOne({ _id:flightid})
+        const { customerName,customerEmail, date, flightid, totalprice,numberOfTicket } = req.body;
+        const flight = await Flight.findOne({ _id: flightid })
         if ((!flight)) {
             return res.status(400).json({ message: 'Flight not available' })
         }
@@ -14,7 +14,7 @@ export const Createbooking = async (req, res) => {
             const day = String(currentDate.getDate()).padStart(2, '0');
             const dateOnly = `${year}-${month}-${day}`;
 
-            const newuser = new bookeddetail({ customerName,customerEmail, date, flightid,TripStartTime,TripEndTime, bookingDate:dateOnly, bookingStatus: "booked", totalprice ,numberOfTicket})
+            const newuser = new bookeddetail({ customerName,customerEmail, date, flightid, bookingDate:dateOnly, bookingStatus: "booked", totalprice ,numberOfTicket})
             await newuser.save()
         res.status(200).json({ message: "Booking Confirm" });
     }
@@ -36,4 +36,4 @@ export const bookdetails = async (req, res) => {
         res.status(500).json({msg:"internal server error"})
     }
 }
-    TripStartTime,TripEndTime
+    
