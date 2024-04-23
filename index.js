@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import nodemailer from 'nodemailer';
 import connectdb from "./Database/config.js";
 import userroutes from "./Routes/user.Route.js";
 import flightroutes from "./Routes/flight.js";
@@ -14,7 +15,35 @@ app.use(express.json())
 connectdb()
 app.use('/api', userroutes)
 app.use('/flight', flightroutes)
-app.use('/booking',Bookedroutes)
+app.use('/booking', Bookedroutes)
+app.post('/mailer', (req, res) => {
+    const { from,to,subject,message} = req.body;
+
+    let mailTransporter= nodemailer.createTransport({
+        service:'gmail',
+        auth:{
+            user:"nithyaveeramani2003@gmail.com",
+            pass:"dpjj lfcg ltmf zwes"
+        }
+    })
+    let details={
+        from:from,
+        to:to,
+        subject:subject,
+        text:message
+    }
+ 
+    mailTransporter.sendMail(details,(err)=>{
+        if(err){
+            console.log("mail not send");
+            res.status(500).json({ message: "Failed to send email" });
+        }else{
+            console.log("mail sent successfully");
+            res.status(200).json({ message: "Email sent successfully" });
+        }
+    }) 
+
+})
 app.listen(port, () => {
     console.log(`port ${port} running`);
 })
