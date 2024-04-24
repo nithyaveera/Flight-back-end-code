@@ -39,12 +39,11 @@ export const bookdetails = async (req, res) => {
 
 export const deleteBookingById = async (req, res) => {
     try {
-        const { bookingId } = req.params.id;
-        const booking = await bookeddetail.findById(bookingId);
+        const booking= await bookeddetail.findOne({ _id: req.params.id })
         if (!booking) {
             return res.status(404).json({ message: "Booking not found" });
         }
-        await bookeddetail.findByIdAndDelete(bookingId);
+        await bookeddetail.findByIdAndDelete(booking);
         res.status(200).json({ message: "Booking deleted successfully" });
     } catch (error) {
         res.status(500).json({ message: "Internal server error" });
