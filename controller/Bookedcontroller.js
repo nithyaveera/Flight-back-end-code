@@ -39,7 +39,7 @@ export const bookdetails = async (req, res) => {
 
 export const deleteBookingById = async (req, res) => {
     try {
-        const { bookingId } = req.params;
+        const { bookingId } = req.params.id;
         const booking = await bookeddetail.findById(bookingId);
         if (!booking) {
             return res.status(404).json({ message: "Booking not found" });
