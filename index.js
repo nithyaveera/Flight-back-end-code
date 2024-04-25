@@ -17,20 +17,27 @@ app.use('/api', userroutes)
 app.use('/flight', flightroutes)
 app.use('/booking', Bookedroutes)
 app.post('/mailer', (req, res) => {
-    const { from,to,subject,message} = req.body;
+    const {fullname,email,phone,message} = req.body;
 
     let mailTransporter= nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user:"nithyaveeramani2003@gmail.com",
-            pass:"dpjj lfcg ltmf zwes"
+            user:process.env.EMAIL,
+            pass:process.env.PASS
         }
     })
     let details={
         from:from,
-        to:to,
-        subject:subject,
-        text:message
+        to:process.env.EMAIL,
+        subject:"Message From SkyFlights",
+        html: `
+        <div>
+        <p>FullName : <b>${fullname}</b></p>
+        <p>Email: <b>${email}</b> </p>
+        <p>Phone Number : <b>${phone}</b></p>
+        <p>Message : <b>${message}</b></p>
+        </div>
+        `
     }
  
     mailTransporter.sendMail(details,(err)=>{
