@@ -28,7 +28,7 @@ app.post('/mailer', (req, res) => {
     })
     let details={
         from:'SkyFlights',
-        to:"vnihya.cr@jkkn.ac.in",
+        to:"nithyaveeramani2003@gmail.com",
         subject:"Message From SkyFlights",
         html: `
         <div>
