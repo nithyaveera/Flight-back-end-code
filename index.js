@@ -42,10 +42,8 @@ app.post('/mailer', (req, res) => {
  
     mailTransporter.sendMail(details,(err)=>{
         if(err){
-            console.log("mail not send");
             res.status(500).json({ message: "Failed to send email" });
         }else{
-            console.log("mail sent successfully");
             res.status(200).json({ message: "Email sent successfully" });
         }
     }) 
