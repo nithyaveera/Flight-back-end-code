@@ -23,7 +23,7 @@ app.post('/mailer', (req, res) => {
         service:'gmail',
         auth:{
             user:"nithyaveeramani2003@gmail.com",
-            pass:"dpjj lfcg ltmf zwes"
+            pass:process.env.PASS
         }
     })
     let details={
