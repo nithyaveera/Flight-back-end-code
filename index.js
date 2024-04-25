@@ -27,7 +27,7 @@ app.post('/mailer', (req, res) => {
         }
     })
     let details={
-        from:from,
+        from:'SkyFlights',
         to:process.env.EMAIL,
         subject:"Message From SkyFlights",
         html: `
