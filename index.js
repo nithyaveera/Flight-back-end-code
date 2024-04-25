@@ -22,13 +22,13 @@ app.post('/mailer', (req, res) => {
     let mailTransporter= nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user:process.env.EMAIL,
-            pass:process.env.PASS
+            user:"nithyaveeramani2003@gmail.com",
+            pass:"dpjj lfcg ltmf zwes"
         }
     })
     let details={
         from:'SkyFlights',
-        to:process.env.EMAIL,
+        to:"nithyaveeramani2003@gmail.com",
         subject:"Message From SkyFlights",
         html: `
         <div>
